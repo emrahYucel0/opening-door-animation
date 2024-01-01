@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İki Kanatlı Kapı Efekti</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+
+        #door {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            perspective: 1000px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .door-wing {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            transform-origin: left;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #left-wing {
+            left: 0;
+            background-color: darkblue;
+        }
+
+        #right-wing {
+            right: 0;
+            background-color: yellow;
+            transform-origin: right;
+        }
+
+        #controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="door">
+        <div id="left-wing" class="door-wing"></div>
+        <div id="right-wing" class="door-wing"></div>
+    </div>
+
+    <div id="controls">
+        <button onclick="OpenDoor()">AÇ</button>
+    </div>
+
+    <script>
+
+        function OpenDoor() {
+            const door = document.getElementById('door');
+            const leftWing = document.getElementById('left-wing');
+            const rightWing = document.getElementById('right-wing');
+
+            door.style.transform = 'translateX(-50%) rotateY(0deg)';
+            leftWing.style.transform = 'rotateY(90deg)';
+            rightWing.style.transform = 'rotateY(-90deg)';
+        }
+    </script>
+</body>
+</html>
